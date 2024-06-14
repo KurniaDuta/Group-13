@@ -1,0 +1,1 @@
+Group 13 Samsung Inovation Campus Batch 5 - IoT and AI Bootcamp
