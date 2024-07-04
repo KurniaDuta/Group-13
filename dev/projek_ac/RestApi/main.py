@@ -3,12 +3,19 @@ import cv2
 from flask import Flask, request, jsonify, json
 from threading import Thread
 from flask_cors import cross_origin
+from room import lantai5, lantai6, lantai7, lantai8
 
 app = Flask(__name__)
 # CORS(app)
 # cap = cv2.VideoCapture(0)
 # model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
 person = 0
+
+lantai5 = lantai5()
+lantai6 = lantai6()
+lantai7 = lantai7()
+lantai8 = lantai8()
+
 info = {
     "fifth" : 'n',
     "sixth" : 'n',
@@ -71,13 +78,24 @@ def post_temperature():
 def get_temperature():
     return jsonify(temperature_humidity)
 
-@app.route('/status', methods=['POST'])
+@app.route('/floor5p', methods=['POST'])
 @cross_origin()
-def post_status():
+def post_floor5():
     # data = json.loads(request.data)
+    global lantai5
     data = request.json
-    print(data)
-    return data
+    for i in range(len(lantai5)) :
+        lantai5[i]['status'] = data[i].get('status')
+        lantai5[i]['hari'] = data[i].get('hari')
+        lantai5[i]['kode'] = data[i].get('kode')
+        lantai5[i]['servis'] = data[i].get('servis')
+    return lantai5
+
+@app.route('/floor5g', methods=['GET'])
+@cross_origin()
+def get_floor5():
+    global lantai5
+    return jsonify(lantai5)
          
 if __name__ == '__main__':
     # Thread(target=video_capture).start()
