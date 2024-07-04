@@ -7,123 +7,20 @@ let ind = -1
 export default function SeventhFloor() {
     const [update, setUpdate] = useState(0)
     const [temporary, setTemporary] = useState(0)
-    const [datas, setDatas] = useState([
-        {
-            ruang: "RT1",
-            servis: "30/12/2022",
-            hari: "10 hari",
-            kode: "h",
-            status: "on"
-        },
-        {
-            ruang: "RT2",
-            servis: "30/12/2022",
-            hari: "20 hari",
-            kode: "m",
-            status: "off"
-        },
-        {
-            ruang: "RT3",
-            servis: "30/12/2022",
-            hari: "30 hari",
-            kode: "k",
-            status: "on"
-        },
-        {
-            ruang: "RT4",
-            servis: "30/12/2022",
-            hari: "40 hari",
-            kode: "h",
-            status: "on"
-        },
-        {
-            ruang: "RT5",
-            servis: "30/12/2022",
-            hari: "50 hari",
-            kode: "h",
-            status: "on"
-        },
-        {
-            ruang: "RT6",
-            servis: "30/12/2022",
-            hari: "60 hari",
-            kode: "h",
-            status: "off",
-        },
-        {
-            ruang: "RT7",
-            servis: "30/12/2022",
-            hari: "70 hari",
-            kode: "h",
-            status: "on"
-        },
-        {
-            ruang: "RT8",
-            servis: "30/12/2022",
-            hari: "90 hari",
-            kode: "h",
-            status: "off"
-        },
-        {
-            ruang: "RT9",
-            servis: "30/12/2022",
-            hari: "100 hari",
-            kode: "h",
-            status: "on"
-        },
-        {
-            ruang: "RT10",
-            servis: "30/12/2022",
-            hari: "110 hari",
-            kode: "h",
-            status: "on"
-        },
-        {
-            ruang: "RT11",
-            servis: "30/12/2022",
-            hari: "120 hari",
-            kode: "h",
-            status: "off"
-        },
-        {
-            ruang: "RT12",
-            servis: "30/12/2022",
-            hari: "130 hari",
-            kode: "h",
-            status: "on"
-        },
-        {
-            ruang: "RT13",
-            servis: "30/12/2022",
-            hari: "140 hari",
-            kode: "h",
-            status: "off"
-        },
-        {
-            ruang: "RT14",
-            servis: "30/12/2022",
-            hari: "150 hari",
-            kode: "h",
-            status: "on"
-        },
-        {
-            ruang: "RT15",
-            servis: "30/12/2022",
-            hari: "160 hari",
-            kode: "h",
-            status: "off"
-        },
-        {
-            ruang: "RT16",
-            servis: "30/12/2022",
-            hari: "170 hari",
-            kode: "h",
-            status: "off"
-        }
-    ])
+    const structureData = {
+        ruang: "0",
+        servis: "0",
+        hari: "0",
+        suhu : "0",
+        standar : "0",
+        kode: "h",
+        status: "on"
+    }
+    const [datas, setDatas] = useState(Array.from({length : 16}, () => ({...structureData})))
 
     useEffect(() => {
         first()
+        getdatas()
         color(datas)
         const loop = setInterval(() => {
             setUpdate(e => (e == 0 ? 1 : 0))
@@ -145,15 +42,18 @@ export default function SeventhFloor() {
                 const temporary = [...datas]
                 temporary[ind] = {...temporary[ind], status : newStatus}
                 setDatas(temporary)
-                console.log(datas)
-                postStatus()
+                postStatus(temporary)
             }
         }
     }
 
-    const postStatus = async () => {
-        const data = await axios.post('http://192.168.72.44:5000/status', datas)
-        console.log(data)
+    const getdatas = async () => {
+        const values = await axios.get('http://192.168.1.8:5000/floor5g')
+        setDatas(values.data)
+    }
+
+    const postStatus = async (temporary) => {
+        const data = await axios.post('http://192.168.1.8:5000/floor5p', temporary)
     }
 
     return (
