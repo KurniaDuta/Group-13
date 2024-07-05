@@ -10,10 +10,10 @@ export default function Parent() {
         detik: 0
     })
     const [info, setInfo] = useState({
-        fifth: 'n',
-        sixth: 'n',
-        seventh: 'n',
-        eighth: 'n'
+        fifth: 'h',
+        sixth: 'h',
+        seventh: 'h',
+        eighth: 'h'
     })
 
     useEffect(() => {
@@ -24,7 +24,7 @@ export default function Parent() {
             setUpdate(e => (e == 0 ? 1 : 0))
         }, 1000)
         return () => clearInterval(loop)
-    }, [,update])
+    }, [update])
 
 
     const tm = () => {
@@ -43,17 +43,8 @@ export default function Parent() {
     }
 
     const getInfo = async () => {
-        try {
-            const values = await axios.get('http://192.168.72.44:5000/info')
-            setInfo(values.data)
-        } catch (error) {
-            setInfo({
-                fifth: 'n',
-                sixth: 'n',
-                seventh: 'n',
-                eighth: 'n'
-            })
-        }
+        const values = await axios.get('http://192.168.1.5:5000/info')
+        setInfo(values.data)
     }
 
     const color = () => {
@@ -62,12 +53,10 @@ export default function Parent() {
         const box3 = document.getElementsByClassName('text-lvl')[2]
         const box4 = document.getElementsByClassName('text-lvl')[3]
 
-        info.fifth == 'y' ? box1.style.color = 'green' : box1.style.color = 'red'
-        info.sixth == 'y' ? box2.style.color = 'green' : box2.style.color = 'red'
-        info.seventh == 'y' ? box3.style.color = 'green' : box3.style.color = 'red'
-        info.eighth == 'y' ? box4.style.color = 'green' : box4.style.color = 'red'
-
-        // mengapa warna merah yang pertama muncul? karena != y
+        info.fifth == 'h' ? box1.style.color = "rgb(155, 255, 139)" : box1.style.color = "rgb(255, 146, 139)"
+        info.sixth == 'h' ? box2.style.color = "rgb(155, 255, 139)" : box2.style.color = "rgb(255, 146, 139)"
+        info.seventh == 'h' ? box3.style.color = "rgb(155, 255, 139)" : box3.style.color = "rgb(255, 146, 139)"
+        info.eighth == 'h' ? box4.style.color = "rgb(155, 255, 139)" : box4.style.color = "rgb(255, 146, 139)"
     }
 
     return (

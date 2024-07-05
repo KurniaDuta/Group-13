@@ -8,7 +8,7 @@ export default function Box({ floor, path }) {
             <div className='container-lvl'>
                 <h1 className='text-lvl'>{floor}</h1>
                 <Link to={path}>
-                    <div className='lvl' />
+                    <button className='btn-card space'></button>
                 </Link>
             </div>
         </>

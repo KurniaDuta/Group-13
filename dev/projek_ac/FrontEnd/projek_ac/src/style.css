@@ -11,11 +11,12 @@ a{
 }
 
 .btn{
-    width: 90px;
-    height: 30px;
+    width: 87px;
+    height: 27px;
     border: 0;
     border-radius: 10px;
-    background-color: rgb(240, 238, 238);  
+    background-color: white;
+    color: rgb(104, 104, 104);
 }
 
 .container{
@@ -43,7 +44,7 @@ a{
     width: 200px;
     height: 50px;
     border-radius: 25px;
-    background-color: rgb(225, 225, 225);
+    border: 1.5px solid rgb(141, 146, 150);
     margin-left: 50px;
     display: flex;
     justify-content: center;
@@ -64,25 +65,15 @@ a{
 }
 .container-lvl{
     width: 100px;
-    height: 160px;
     margin: 10px;
     text-align: center;
+    border-radius: 25px;
+    border: 1.5px solid rgb(141, 146, 150);
 }
 
 .text-lvl{
     font-size: 50px;
     color: rgb(141, 146, 150);
-}
-
-.lvl{
-    width: 100px;
-    height: 100px;
-    background-color: rgb(240, 238, 238);
-    border-radius: 25%;
-  }
-
-.lvl:hover{
-    background-color: rgb(225, 225, 225);
 }
 
 .container-two-one{
@@ -131,7 +122,9 @@ a{
     margin-right: 2.5px;
     margin-left: 2.5px;
     border-radius: 10px;
-    background-color: rgb(240, 238, 238);
+    position: relative;
+    overflow: hidden;
+    /* background-color: rgb(240, 238, 238); */
 }
 
 .container-two-one-two-one-one-one-one{
@@ -143,7 +136,17 @@ a{
     align-items: center;
     /* background-color: rgb(29, 124, 207); */
 }
+
 .container-two-one-two-one-one-one-two{
+    width: 100px;
+    height: 150px;
+    border-radius: 10px;
+    position: absolute;
+    /* top: 0; */
+    /* background-color: rgb(240, 238, 238); */
+}
+
+.container-two-one-two-one-one-one-three{
     width: 100px;
     height: 50px;
     border-radius: 10px;
@@ -151,6 +154,8 @@ a{
     justify-content: center;
     align-items: center;
     background-color: rgb(255, 255, 255);
+    position: absolute;
+    bottom: 0;
 }
 
 .btn-card{
@@ -166,15 +171,10 @@ a{
     width: 70px;
 }
 
-@keyframes btn-card-an {
-   100%{
-    width: 70px;
-   }
-}
-
 .text-info{
     font-size: 25px;
     color: rgb(104, 104, 104);
+    text-align: center;
 }
 
 .container-two-two{
@@ -187,14 +187,14 @@ a{
 }
 
 .container-two-two-one-one{
-    width: 200px;
-    height: 40px;
+    width: 197px;
+    height: 37px;
     margin-bottom: 20px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(240, 238, 238);
+    border: 1.5px solid rgb(141, 146, 150);
 }
 
 .container-two-two-one-two{
@@ -213,9 +213,61 @@ a{
 .absolute{
     position: absolute;
     right: 0;
+    border: 1.5px solid rgb(141, 146, 150);
 }
 
 .absolute:hover{
-    background-color: rgb(149, 149, 149);  
+    background-color: rgb(141, 146, 150);  
     /* background-color: rgb(149, 149, 149)!important;    */
+}
+
+.red{
+    border: 1.5px solid rgb(255, 146, 139);
+}
+
+.green{
+    border: 1.5px solid rgb(155, 255, 139);
+}
+
+.space{
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+
+.information{
+    color: rgb(141, 146, 150);
+}
+
+.up{
+    top: 0;
+    animation: up .5s forwards;
+}
+
+@keyframes up {
+    0%{
+        top: 100px;
+    }
+    100%{
+        top: 0px;
+    }
+}
+
+.down{
+    top: 100px;
+    animation: down .5s forwards;
+}
+
+@keyframes down {
+    0%{
+        top: 0;
+    }
+    100%{
+        top: 100px;
+    }
+}
+
+.text-temperature{
+    font-size: 20px;
+    text-align: center;
+    color: rgb(104, 104, 104);
 }
