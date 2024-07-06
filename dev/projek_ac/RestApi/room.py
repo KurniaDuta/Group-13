@@ -41,7 +41,7 @@ def lt7() :
     }.copy() for _ in range(16)]
     return datas
 
-def lt8() :
+def lt8(person) :
     datas = [{
         'ruang' : 'RT1',
         'servis' : '30/12/2022', # diambil dari data base # ada perhitungan lebih lanjut,
@@ -124,7 +124,7 @@ def lt8() :
     },
     {
         'ruang' : 'RT1',
-        'servis' : '30/12/2022',
+        'servis' : '5/7/2024',
         'suhu' : '25',
         'standar' : '22',
     },
@@ -141,7 +141,7 @@ def lt8() :
         'standar' : '22',
     }]
     datas = loop_day(datas)
-    datas = loop_kode(datas)
+    datas = loop_kode(datas, person)
     datas = loop_status(datas)
     return datas
 
@@ -153,10 +153,10 @@ def loop_status(datas):
             datas[i]['status'] = 'on'
     return datas
 
-def loop_kode(datas):
+def loop_kode(datas, person):
     for i in range(len(datas)) :
         difference = abs(int(datas[i]['suhu']) - int(datas[i]['standar']))
-        if difference < 3 :
+        if difference < 3 or person[i] == 0 :
             datas[i]['kode'] = 'h'
         elif difference < 6 :
             datas[i]['kode'] = 'k'

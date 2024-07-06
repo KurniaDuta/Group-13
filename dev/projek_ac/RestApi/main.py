@@ -10,12 +10,12 @@ app = Flask(__name__)
 # CORS(app)
 # cap = cv2.VideoCapture(0)
 # model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
-person = 0
+person = [0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0]
 
 lantai5 = lt5()
 lantai6 = lt6()
 lantai7 = lt7()
-lantai8 = lt8()
+lantai8 = lt8(person)
 info = result(lantai5, lantai6, lantai7, lantai8)
 temperature_humidity = {
     "temp" : 26,
@@ -130,7 +130,7 @@ def get_floor7():
 def post_floor8():
     # data = json.loads(request.data)
     global lantai8
-    lantai8 = lt8()
+    lantai8 = lt8(person)
     data = request.json
     for i in range(len(lantai8)) :
         lantai8[i]['status'] = data[i].get('status')
