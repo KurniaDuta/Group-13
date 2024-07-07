@@ -5,11 +5,13 @@ from threading import Thread
 from flask_cors import cross_origin
 from room import lt5, lt6, lt7, lt8
 from information import result
+from pymongo import MongoClient
 
 app = Flask(__name__)
-# CORS(app)
-# cap = cv2.VideoCapture(0)
-# model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
+client = MongoClient('mongodb+srv://dutaka2945:6XvyLNT9JZj1z6TN@iot13.t2mqlae.mongodb.net/')
+db = client['people_counter'] #sementara
+counts_collection = db['person']
+
 person = [0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0]
 
 lantai5 = lt5()
@@ -22,27 +24,11 @@ temperature_humidity = {
     "hum" : 26
 }
 
-# def video_capture():
-#     global person
-#     while True:
-#         ret, frame = cap.read()
-#         if not ret :
-#             break
-#         results = model(frame)
-#         person = 0
-#         for _,row in results.pandas().xyxy[0].iterrows():
-#             if row['name'] == 'person':
-#                 cv2.rectangle(frame, (int(row['xmin']), int(row['ymin'])), (int(row['xmax']), int(row['ymax'])), (255, 0, 0))
-#                 person += 1
-#         cv2.imshow("PERSON", frame)
-#         if cv2.waitKey(1) & 0XFF == ord('q'):
-#             break
-#     cap.release()
-#     cv2.destroyAllWindows()
-
-@app.route('/person', methods=['GET'])
-def get_count():
-    return str(person)
+@app.route('/person', methods=['POST'])
+def update_count_in():
+    person[0] = request.json['person']
+    counts_collection.insert_one({'person': person})
+    return 'Person Count updated successfully', 200
 
 @app.route('/information', methods=['POST'])
 def post_information():
@@ -141,7 +127,7 @@ def post_floor8():
 def get_floor8():
     global lantai8
     return jsonify(lantai8)
-         
+
 if __name__ == '__main__':
     # Thread(target=video_capture).start()
     app.run(host='0.0.0.0')
