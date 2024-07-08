@@ -41,7 +41,6 @@ export default function EigthFloor() {
                 colorButton(newStatus)
                 const temporary = [...datas]
                 temporary[ind[0]] = { ...temporary[ind[0]], status: newStatus }
-                setDatas(temporary)
                 postStatus(temporary)
             }
         }
@@ -50,6 +49,7 @@ export default function EigthFloor() {
     const getdatas = async () => {
         const values = await axios.get('http://192.168.1.6:5000/floor8g')
         setDatas(values.data)
+        color(values.data)
     }
 
     const postStatus = async (temporary) => {

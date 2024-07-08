@@ -9,16 +9,9 @@ export default function Parent() {
         menit: 0,
         detik: 0
     })
-    const [info, setInfo] = useState({
-        fifth: 'h',
-        sixth: 'h',
-        seventh: 'h',
-        eighth: 'h'
-    })
 
     useEffect(() => {
         getInfo()
-        color()
         tm()
         const loop = setInterval(() => {
             setUpdate(e => (e == 0 ? 1 : 0))
@@ -43,11 +36,11 @@ export default function Parent() {
     }
 
     const getInfo = async () => {
-        const values = await axios.get('http://192.168.1.5:5000/info')
-        setInfo(values.data)
+        const values = await axios.get('http://192.168.1.6:5000/info')
+        color(values.data)
     }
 
-    const color = () => {
+    const color = (info) => {
         const box1 = document.getElementsByClassName('text-lvl')[0]
         const box2 = document.getElementsByClassName('text-lvl')[1]
         const box3 = document.getElementsByClassName('text-lvl')[2]

@@ -41,19 +41,19 @@ export default function SeventhFloor() {
                 colorButton(newStatus)
                 const temporary = [...datas]
                 temporary[ind[0]] = { ...temporary[ind[0]], status: newStatus }
-                setDatas(temporary)
                 postStatus(temporary)
             }
         }
     }
 
     const getdatas = async () => {
-        const values = await axios.get('http://192.168.1.5:5000/floor7g')
+        const values = await axios.get('http://192.168.1.6:5000/floor7g')
         setDatas(values.data)
+        color(values.data)
     }
 
     const postStatus = async (temporary) => {
-        const data = await axios.post('http://192.168.1.5:5000/floor7p', temporary)
+        const data = await axios.post('http://192.168.1.6:5000/floor7p', temporary)
     }
 
     return (
