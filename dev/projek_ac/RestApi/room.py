@@ -1,164 +1,163 @@
 from day import result_day
 
-def lt5() : # ditambah parameter untuk menentukan kode
-    # temp = [{}]
-    # temp[0]['ruang'] = 'RT1'
-    # temp[0]['hari'] = '10 hari'
-    # temp[0]['kode'] = 'kode'
+def lt5(person, out_data, temperature) :
     datas = [{
         'ruang' : 'RT1',
-        'servis' : '30/12/2022', # diambil dari data base di dalam data base tanggal bluan tahun dipisah untuk mempermudah dalam penghitubangan 'hari'
-        'hari' : '10 hari', # ada perhitungan lebih lanjut,
-        'suhu' : '22', # diubah berdasarkan sensor dht
+        'servis' : '1/1/2024', # diambil dari data base di dalam data base tanggal bluan tahun dipisah untuk mempermudah dalam penghitubangan 'hari'
         'standar' : '22', # diambil dari database
-        'kode' : 'h', # ada perhitungan lebih lanjut
-        'status' : 'on' # dimasukkan sendiri
     }.copy() for _ in range(16)]
-    #datas[0]['status'] = kode...
+    datas = loop_suhu(datas,temperature)
+    datas = loop_day(datas)
+    datas = loop_kode(datas, person)
+    datas = loop_status(datas, out_data)
     return datas
 
-def lt6() :
+def lt6(person, out_data, temperature) :
     datas = [{
         'ruang' : 'RT1',
-        'servis' : '30/12/2022', # diambil dari data base
-        'hari' : '10 hari', # ada perhitungan lebih lanjut,
-        'suhu' : '22', # diambil dari database selanjutnya diubah baerdasarkan sensor dht
-        'standar' : '22', # diambil dari database
-        'kode' : 'h', # ada perhitungan lebih lanjut
-        'status' : 'on'
+        'servis' : '1/3/2024',
+        'standar' : '22',
     }.copy() for _ in range(16)]
+    datas = loop_suhu(datas,temperature)
+    datas = loop_day(datas)
+    datas = loop_kode(datas, person)
+    datas = loop_status(datas, out_data)
     return datas
 
-def lt7() :
+def lt7(person, out_data, temperature) :
     datas = [{
         'ruang' : 'RT1',
-        'servis' : '30/12/2022', # diambil dari data base
-        'hari' : '10 hari', # ada perhitungan lebih lanjut,
-        'suhu' : '22', # diambil dari database selanjutnya diubah baerdasarkan sensor dht
-        'standar' : '22', # diambil dari database
-        'kode' : 'h', # ada perhitungan lebih lanjut
-        'status' : 'on'
+        'servis' : '5/5/2024',
+        'standar' : '22',
     }.copy() for _ in range(16)]
+    datas = loop_suhu(datas,temperature)
+    datas = loop_day(datas)
+    datas = loop_kode(datas, person)
+    datas = loop_status(datas, out_data)
     return datas
 
-def lt8(person) :
+def lt8(person, out_data, temperature) :
     datas = [{
         'ruang' : 'RT1',
         'servis' : '30/12/2022', # diambil dari data base # ada perhitungan lebih lanjut,
-        'suhu' : '22', # diambil dari database selanjutnya diubah baerdasarkan sensor dht
+        'suhu' : temperature[0], # diambil dari database selanjutnya diubah baerdasarkan sensor dht
         'standar' : '22', # diambil dari database # ada perhitungan lebih lanjut
     },
     {
         'ruang' : 'RT1',
         'servis' : '30/12/2022',
-        'suhu' : '22',
+        'suhu' : temperature[1],
         'standar' : '22',
     },
     {
         'ruang' : 'RT1',
         'servis' : '30/12/2022',
-        'suhu' : '22',
+        'suhu' : temperature[2],
         'standar' : '22',
     },
     {
         'ruang' : 'RT1',
         'servis' : '30/12/2022',
-        'suhu' : '22',
-        'standar' : '22',
-        'kode' : 'k',
-    },
-    {
-        'ruang' : 'RT1',
-        'servis' : '30/12/2022',
-        'suhu' : '22',
-        'standar' : '22',
-        'kode' : 'm', # ini contoh tidak valid
-    },
-    {
-        'ruang' : 'RT1',
-        'servis' : '30/12/2022',
-        'suhu' : '22',
+        'suhu' : temperature[3],
         'standar' : '22',
     },
     {
         'ruang' : 'RT1',
         'servis' : '30/12/2022',
-        'suhu' : '22',
+        'suhu' : temperature[4],
         'standar' : '22',
     },
     {
         'ruang' : 'RT1',
         'servis' : '30/12/2022',
-        'suhu' : '22',
-        'standar' : '22',
-    },
-    {
-        'ruang' : 'RT1',
-        'servis' : '30/12/2022', # diambil dari data base
-        'suhu' : '22', # diambil dari database selanjutnya diubah baerdasarkan sensor dht
-        'standar' : '22', # diambil dari database 
-    },
-    {
-        'ruang' : 'RT1',
-        'servis' : '30/12/2022',
-        'suhu' : '22',
+        'suhu' : temperature[5],
         'standar' : '22',
     },
     {
         'ruang' : 'RT1',
         'servis' : '30/12/2022',
-        'suhu' : '22',
+        'suhu' : temperature[6],
         'standar' : '22',
     },
     {
         'ruang' : 'RT1',
         'servis' : '30/12/2022',
-        'suhu' : '22',
+        'suhu' : temperature[7],
         'standar' : '22',
     },
     {
         'ruang' : 'RT1',
         'servis' : '30/12/2022',
-        'suhu' : '22',
+        'suhu' : temperature[8],
+        'standar' : '22',
+    },
+    {
+        'ruang' : 'RT1',
+        'servis' : '30/12/2022',
+        'suhu' : temperature[9],
+        'standar' : '22',
+    },
+    {
+        'ruang' : 'RT1',
+        'servis' : '30/12/2022',
+        'suhu' : temperature[10],
+        'standar' : '22',
+    },
+    {
+        'ruang' : 'RT1',
+        'servis' : '30/12/2022',
+        'suhu' : temperature[11],
+        'standar' : '22',
+    },
+    {
+        'ruang' : 'RT1',
+        'servis' : '30/12/2022',
+        'suhu' : temperature[12],
         'standar' : '22',
     },
     {
         'ruang' : 'RT1',
         'servis' : '5/7/2024',
-        'suhu' : '25',
+        'suhu' : temperature[13],
         'standar' : '22',
     },
     {
         'ruang' : 'RT1',
         'servis' : '30/12/2022',
-        'suhu' : '22',
+        'suhu' : temperature[14],
         'standar' : '22',
     },
     {
         'ruang' : 'RT1',
         'servis' : '30/12/2022',
-        'suhu' : '22',
+        'suhu' : temperature[15],
         'standar' : '22',
     }]
     datas = loop_day(datas)
     datas = loop_kode(datas, person)
-    datas = loop_status(datas)
+    datas = loop_status(datas, out_data)
     return datas
 
-def loop_status(datas):
+def loop_suhu(datas, temperature):
+    for i in range(len(datas)):
+        datas[i]['suhu'] = temperature[i]
+    return datas
+
+def loop_status(datas, out_data):
     for i in range(len(datas)) :
         if datas[i]['kode'] == 'm' :
             datas[i]['status'] = 'off'
         else :
-            datas[i]['status'] = 'on'
+            datas[i]['status'] = out_data[i]
     return datas
 
 def loop_kode(datas, person):
+    # print(person[0])
     for i in range(len(datas)) :
         difference = abs(int(datas[i]['suhu']) - int(datas[i]['standar']))
-        if difference < 3 or person[i] == 0 :
+        if difference < 4 or person[i] == 0 :
             datas[i]['kode'] = 'h'
-        elif difference < 6 :
+        elif difference < 7 :
             datas[i]['kode'] = 'k'
         else :
             datas[i]['kode'] = 'm'
