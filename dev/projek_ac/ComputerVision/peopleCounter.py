@@ -1,37 +1,31 @@
 import cv2
 import numpy as np
 import requests
+import time
 
 # Load YOLO
-net = cv2.dnn.readNet("dev/projek_ac/ComputerVision/yolov3.weights", "dev/projek_ac/ComputerVision/yolov3.cfg")
+net = cv2.dnn.readNet(
+    "dev/projek_ac/ComputerVision/yolov3.weights",
+    "dev/projek_ac/ComputerVision/yolov3.cfg",
+)
 layer_names = net.getLayerNames()
 output_layers = [layer_names[i - 1] for i in net.getUnconnectedOutLayers()]
 
 with open("dev/projek_ac/ComputerVision/coco.names", "r") as f:
     classes = [line.strip() for line in f.readlines()]
 
-# Define the in-out line positions (middle of the frame)    
-line_position_in = 400 
+# Define the in-out line positions (middle of the frame)
+line_position_in = 400
 line_position_out = 250
 
 person = 0
 count_out = 0
 previous_centers = {}
 
+send_interval = 5
+last_send_time = time.time()
+
 cap = cv2.VideoCapture(0)
-
-
-def send_person(person):
-    url = 'http://127.0.0.1:5000/person'
-    data = {'person': person}
-    try:
-        response = requests.post(url, json=data)
-        if response.status_code == 200:
-            print(f'Successfully sent person: {person}')
-        else:
-            print(f'Failed to send person: {person}')
-    except Exception as e:
-        print(f'Error sending person: {e}')
 
 while cap.isOpened():
     ret, frame = cap.read()
@@ -41,7 +35,9 @@ while cap.isOpened():
     height, width, channels = frame.shape
 
     # Detecting objects
-    blob = cv2.dnn.blobFromImage(frame, 0.00392, (416, 416), (0, 0, 0), True, crop=False)
+    blob = cv2.dnn.blobFromImage(
+        frame, 0.00392, (416, 416), (0, 0, 0), True, crop=False
+    )
     net.setInput(blob)
     outs = net.forward(output_layers)
 
@@ -81,7 +77,9 @@ while cap.isOpened():
             confidence = confidences[i]
             color = (0, 255, 0)
             cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
-            cv2.putText(frame, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+            cv2.putText(
+                frame, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2
+            )
 
             center = centers[i]
             current_ids.append(center)
@@ -101,12 +99,36 @@ while cap.isOpened():
     cv2.line(frame, (line_position_out, 0), (line_position_out, height), (0, 0, 255), 2)
 
     # Display counts
-    cv2.putText(frame, f'In: {person}', (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-    cv2.putText(frame, f'Out: {count_out}', (10, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+    cv2.putText(
+        frame, f"In: {person}", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2
+    )
+    cv2.putText(
+        frame,
+        f"Out: {count_out}",
+        (10, 100),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        1,
+        (0, 255, 0),
+        2,
+    )
 
     cv2.imshow("Image", frame)
+    
+    current_time = time.time()
+    if current_time - last_send_time >= send_interval:
+        url = "http://127.0.0.1:5000/person"
+        data = {"person": person}
+        try:
+            response = requests.post(url, json=data)
+            if response.status_code == 200:
+                print(f"Successfully sent person: {person}")
+            else:
+                print(f"Failed to send person: {person}")
+        except Exception as e:
+            print(f"Error sending person: {e}")
+        last_send_time = current_time
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    if cv2.waitKey(1) & 0xFF == ord("q"):
         break
 
 cap.release()
