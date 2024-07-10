@@ -116,7 +116,7 @@ while cap.isOpened():
     
     current_time = time.time()
     if current_time - last_send_time >= send_interval:
-        url = "http://127.0.0.1:5000/person"
+        url = "https://api-9928.vercel.app/person"
         data = {"person": person}
         try:
             response = requests.post(url, json=data)
