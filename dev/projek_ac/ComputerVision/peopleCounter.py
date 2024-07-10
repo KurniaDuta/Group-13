@@ -32,6 +32,8 @@ while cap.isOpened():
     if not ret:
         break
 
+    frame = cv2.flip(frame, 1)
+    
     height, width, channels = frame.shape
 
     # Detecting objects
