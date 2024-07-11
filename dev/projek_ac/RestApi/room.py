@@ -208,7 +208,6 @@ def loop_status(datas, out_data):
 
 
 def loop_kode(datas, person):
-    # print(person[0])
     for i in range(len(datas)):
         difference = abs(int(datas[i]["suhu"]) - int(datas[i]["standar"]))
         if difference < 4 or person[i] == 0:
