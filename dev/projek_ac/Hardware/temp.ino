@@ -7,8 +7,8 @@
 
 const char* ssid = "JTI-POLINEMA";
 const char* password = "jtifast!";
-const char* getInfo = "http://192.168.72.152:5000/information";
-const char* postTemperature = "http://192.168.72.152:5000/temperature";
+const char* getInfo = "https://api-9928.vercel.app/information";
+const char* postTemperature = "https://api-9928.vercel.app/temperature";
 String tempIndexOn = "0";
 String tempIndexOff = "0";
 uint16_t rawData[2][15][439] = {
@@ -98,24 +98,27 @@ void get() {
   const char* index1 = doc["index1"];
   const char* index2 = doc["index2"];
   const char* kode = doc["kode"];
-  if (String(index1) == "0") {
-    if (tempIndexOff != String(index2)) {
-      irsend.sendRaw(rawData[String(index1).toInt()][String(index2).toInt()], 439, 38);
-      tempIndexOff == String(index2);
-    }
-  } else if (String(index1) == "1") {
-    if (tempIndexOn != String(index2)) {
-      irsend.sendRaw(rawData[String(index1).toInt()][String(index2).toInt()], 439, 38);
-      tempIndexOn == String(index2);
-    }
-  }
+  Serial.println(kode);
+  irsend.sendRaw(rawData[String(index1).toInt()][String(index2).toInt()], 439, 38);
+  // if (String(index1) == "0") {
+  //   if (tempIndexOff != String(index2)) {
+  //     irsend.sendRaw(rawData[String(index1).toInt()][String(index2).toInt()], 439, 38);
+  //     tempIndexOff == String(index2);
+  //   }
+  // } else if (String(index1) == "1") {
+  //   if (tempIndexOn != String(index2)) {
+  //     irsend.sendRaw(rawData[String(index1).toInt()][String(index2).toInt()], 439, 38);
+  //     tempIndexOn == String(index2);
+  //   }
+  // }
   led(String(kode));
   http.end();
 }
 
 void post() {
   float t = dht.readTemperature();
-  float h = dht.readHumidity();
+  // float h = dht.readHumidity();
+  Serial.println(t);
   http.begin(postTemperature);
   http.addHeader("Content-Type", "application/json");
   String postTemp = "{\"temp\":\"" + String(t)  + "\"}";

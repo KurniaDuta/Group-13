@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 temp = [['on' for _ in range(16)] for _ in range(4)]
 person = [[1 for _ in range(16)] for _ in range(4)]
-temperature = [["27" for _ in range(16)] for _ in range(4)]
+temperature = [["28" for _ in range(16)] for _ in range(4)]
 
 ino = {
     'kode' : 'h',
@@ -36,7 +36,7 @@ def update_count_in():
 @cross_origin()
 def get_information():
     global ino
-    ino = result_datas(lantai5[0]['kode'], lantai5[0]['suhu'], lantai5[0]['standar'], person[0][0], ino['index2'])
+    ino = result_datas(lantai5[0]['kode'], lantai5[0]['suhu'], lantai5[0]['standar'], lantai5[0]['status'], person[0][0], ino['index2'])
     return jsonify(ino)
 
 @app.route('/temperature', methods=['POST'])
@@ -45,6 +45,7 @@ def post_temperature():
     global lantai5
     data = request.json
     temperature[0][0] = data.get('temp')
+    temperature[0][0] = int(float(temperature[0][0]))
     lantai5 = lt5(person[0], temp[0], temperature[0])
     return lantai5
 

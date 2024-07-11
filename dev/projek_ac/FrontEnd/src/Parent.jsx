@@ -36,7 +36,7 @@ export default function Parent() {
     }
 
     const getInfo = async () => {
-        const values = await axios.get('http://192.168.1.6:5000/info')
+        const values = await axios.get('http://192.168.58.209:5000/info')
         color(values.data)
     }
 
