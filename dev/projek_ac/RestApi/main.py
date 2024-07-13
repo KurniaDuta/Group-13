@@ -122,5 +122,4 @@ def get_floor8():
     return jsonify(lantai8)
          
 if __name__ == '__main__':
-    print(result_datas(lantai5[0]['kode'], lantai5[0]['suhu'], lantai5[0]['standar'], person[0][0], ino['index2']))
     app.run(host='0.0.0.0')

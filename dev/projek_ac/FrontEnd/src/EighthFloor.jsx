@@ -47,13 +47,13 @@ export default function EigthFloor() {
     }
 
     const getdatas = async () => {
-        const values = await axios.get('http://192.168.58.209:5000/floor8g')
+        const values = await axios.get('http://localhost:5000/floor8g')
         setDatas(values.data)
         color(values.data)
     }
 
     const postStatus = async (temporary) => {
-        const data = await axios.post('http://192.168.58.209:5000/floor8p', temporary)
+        const data = await axios.post('http://localhost:5000/floor8p', temporary)
     }
 
     return (

@@ -94,20 +94,33 @@ void get() {
   const char* index1 = doc["index1"];
   const char* index2 = doc["index2"];
   const char* kode = doc["kode"];
+  bool isTrue[2] = {false, false};
+  int tempIndex[2] = {0, 0};
 
   for (int i = 0; i < 15; i++) {
     if(String(index1).toInt() == i) {
-      i1 = String(index1).toInt();
-      break;
+      // i1 = String(index1).toInt();
+      isTrue[0] = true;
+      tempIndex[0] = String(index1).toInt();
+    }
+    if(String(index2).toInt() == i) {
+      isTrue[1] = true;
+      tempIndex[1] = String(index1).toInt();
+      // i2 = String(index1).toInt();
     }
   }
 
-  for (int i = 0; i < 15; i++) {
-    if(String(index2).toInt() == i) {
-      i2 = String(index1).toInt();
-      break;
-    }
+  if (isTrue[0] && isTrue[1]) {
+    i1 = tempIndex[0];
+    i2 = tempIndex[1];
   }
+
+  // for (int i = 0; i < 15; i++) {
+  //   if(String(index2).toInt() == i) {
+  //     i2 = String(index1).toInt();
+  //     break;
+  //   }
+  // }
 
   // if ((String(index1).toInt() == 0 || String(index1).toInt() == 1) && (String(index2).toInt() == 0 || String(index2).toInt() == 1)) {
   //   Serial.println("p");
