@@ -27,7 +27,7 @@ def find_service():
 #     return result_standar
 
 def find_standar(person):
-    result = "23"
+    result = "27"
     current = current_time()
     datas = list(db.room.find({}, {"room5.datas": 1, "_id": 0}))
     datas = datas[0]['room5']['datas']
@@ -49,7 +49,6 @@ def time_standar(t):
     result = t.split(":")
     return int(result[0] + result[1])
 
-print(find_standar(16))
 
 # query = {
 #     "room5.datas": {
@@ -118,7 +117,7 @@ def lt5(person, out_data, temperature):
             "ruang": "RT1",
             "servis": find_service(),  # diambil dari data base # ada perhitungan lebih lanjut,
             "suhu": temperature[0],  # diambil dari database selanjutnya diubah baerdasarkan sensor dht
-            "standar": find_standar(person),  # diambil dari database # ada perhitungan lebih lanjut
+            "standar": find_standar(person[0]),  # diambil dari database # ada perhitungan lebih lanjut
         },
         {
             "ruang": "RT1",
