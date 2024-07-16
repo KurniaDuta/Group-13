@@ -105,7 +105,7 @@ void get() {
     }
     if(String(index2).toInt() == i) {
       isTrue[1] = true;
-      tempIndex[1] = String(index1).toInt();
+      tempIndex[1] = String(index2).toInt();
       // i2 = String(index1).toInt();
     }
   }
