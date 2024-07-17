@@ -8,7 +8,7 @@ from to_ino import result_datas
 app = Flask(__name__)
 
 temp = [['on' for _ in range(16)] for _ in range(4)]
-person = [[1 for _ in range(16)] for _ in range(4)]
+person = [[0 for _ in range(16)] for _ in range(4)]
 temperature = [["28" for _ in range(16)] for _ in range(4)]
 
 ino = {
