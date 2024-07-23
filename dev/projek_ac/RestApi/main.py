@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 temp = [['on' for _ in range(16)] for _ in range(4)]
 person = [[0 for _ in range(16)] for _ in range(4)]
-temperature = [["28" for _ in range(16)] for _ in range(4)]
+temperature = [["26" for _ in range(16)] for _ in range(4)]
 
 ino = {
     'kode' : 'h',
