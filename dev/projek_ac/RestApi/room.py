@@ -17,7 +17,7 @@ def find_service():
     return result
 
 def find_standar(person):
-    result = "24"
+    result = "27"
     current = current_time()
     datas = list(db.room.find({}, {"room5.datas": 1, "_id": 0}))
     datas = datas[0]['room5']['datas']
