@@ -4,7 +4,7 @@ import axios from "axios"
 
 let ind = [-1, -1]
 
-export default function SeventhFloor() {
+export default function FifthFloor() {
     const [update, setUpdate] = useState(0)
     const [temporary, setTemporary] = useState(0)
     const structureData = {
@@ -47,19 +47,19 @@ export default function SeventhFloor() {
     }
 
     const getdatas = async () => {
-        const values = await axios.get('http://192.168.1.6:5000/floor7g')
+        const values = await axios.get('http://localhost:5000/floor5g')
         setDatas(values.data)
         color(values.data)
     }
 
     const postStatus = async (temporary) => {
-        const data = await axios.post('http://192.168.1.6:5000/floor7p', temporary)
+        const data = await axios.post('http://localhost:5000/floor5p', temporary)
     }
 
     return (
         <>
             <div className="container">
-                <h1 className="text-floor">Lantai Tujuh</h1>
+                <h1 className="text-floor">Lantai Lima</h1>
             </div>
             <div className="container-two">
                 <div className="container-two-one">

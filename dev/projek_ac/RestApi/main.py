@@ -8,8 +8,8 @@ from to_ino import result_datas
 app = Flask(__name__)
 
 temp = [['on' for _ in range(16)] for _ in range(4)]
-person = [[1 for _ in range(16)] for _ in range(4)]
-temperature = [["27" for _ in range(16)] for _ in range(4)]
+person = [[0 for _ in range(16)] for _ in range(4)]
+temperature = [["26" for _ in range(16)] for _ in range(4)]
 
 ino = {
     'kode' : 'h',
@@ -36,7 +36,8 @@ def update_count_in():
 @cross_origin()
 def get_information():
     global ino
-    ino = result_datas(lantai5[0]['kode'], lantai5[0]['suhu'], lantai5[0]['standar'], person[0][0], ino['index2'])
+    lantai5 = lt5(person[0], temp[0], temperature[0])
+    ino = result_datas(lantai5[0]['kode'], lantai5[0]['suhu'], lantai5[0]['standar'], lantai5[0]['status'], person[0][0], ino['index2'])
     return jsonify(ino)
 
 @app.route('/temperature', methods=['POST'])
@@ -45,6 +46,7 @@ def post_temperature():
     global lantai5
     data = request.json
     temperature[0][0] = data.get('temp')
+    temperature[0][0] = int(float(temperature[0][0]))
     lantai5 = lt5(person[0], temp[0], temperature[0])
     return lantai5
 
@@ -70,6 +72,7 @@ def post_floor5():
 @cross_origin()
 def get_floor5():
     global lantai5
+    lantai5 = lt5(person[0], temp[0], temperature[0])
     return jsonify(lantai5)
 
 @app.route('/floor6p', methods=['POST'])
@@ -86,6 +89,7 @@ def post_floor6():
 @cross_origin()
 def get_floor6():
     global lantai6
+    lantai6 = lt6(person[1], temp[1], temperature[1])
     return jsonify(lantai6)
 
 @app.route('/floor7p', methods=['POST'])
@@ -102,6 +106,7 @@ def post_floor7():
 @cross_origin()
 def get_floor7():
     global lantai7
+    lantai7 = lt7(person[2], temp[2], temperature[2])
     return jsonify(lantai7)
 
 @app.route('/floor8p', methods=['POST'])
@@ -118,8 +123,8 @@ def post_floor8():
 @cross_origin()
 def get_floor8():
     global lantai8
+    lantai8 = lt8(person[3], temp[3], temperature[3])
     return jsonify(lantai8)
          
 if __name__ == '__main__':
-    print(result_datas(lantai5[0]['kode'], lantai5[0]['suhu'], lantai5[0]['standar'], person[0][0], ino['index2']))
     app.run(host='0.0.0.0')

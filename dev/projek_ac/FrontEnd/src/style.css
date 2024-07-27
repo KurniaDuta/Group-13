@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-*{
+
+* {
     user-select: none;
     font-family: Kanit;
     padding: 0;
     margin: 0;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-.btn{
+.btn {
     width: 87px;
     height: 27px;
     border: 0;
@@ -19,28 +20,27 @@ a{
     color: rgb(104, 104, 104);
 }
 
-.container{
+.container {
     width: 100%;
     height: 20vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: rgb(223, 223, 223); */
 }
 
-.text-floor{
+.text-floor {
     font-size: 50px;
     color: rgb(141, 146, 150);
 }
 
-.container-one{
+.container-one {
     width: 100%;
     height: 20vh;
     display: flex;
     align-items: center;
 }
 
-.container-watch{
+.container-watch {
     width: 200px;
     height: 50px;
     border-radius: 25px;
@@ -51,19 +51,20 @@ a{
     align-items: center;
 }
 
-.text-watch{
+.text-watch {
     font-size: 20px;
     color: rgb(141, 146, 150);
 }
 
-.container-two{
+.container-two {
     width: 100%;
     height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.container-lvl{
+
+.container-lvl {
     width: 100px;
     margin: 10px;
     text-align: center;
@@ -71,31 +72,28 @@ a{
     border: 1.5px solid rgb(141, 146, 150);
 }
 
-.text-lvl{
+.text-lvl {
     font-size: 50px;
     color: rgb(141, 146, 150);
 }
 
-.container-two-one{
+.container-two-one {
     width: 80%;
     height: 100%;
-    /* background-color: rgb(216, 214, 214); */
 }
 
-.container-two-one-one{
+.container-two-one-one {
     width: 100%;
     height: 10%;
     display: flex;
     align-items: center;
-    /* background-color: antiquewhite; */
 }
 
-.container-two-one-two{
+.container-two-one-two {
     width: 100%;
-    /* background-color: antiquewhite; */
 }
 
-.container-two-one-two-one{
+.container-two-one-two-one {
     width: 100%;
     height: 150px;
     margin-top: 50px;
@@ -103,10 +101,9 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: aqua; */
 }
 
-.container-two-one-two-one-one{
+.container-two-one-two-one-one {
     width: 420px;
     height: 150px;
     margin-left: 25px;
@@ -116,7 +113,7 @@ a{
     align-items: center;
 }
 
-.container-two-one-two-one-one-one{
+.container-two-one-two-one-one-one {
     width: 100px;
     height: 150px;
     margin-right: 2.5px;
@@ -124,29 +121,25 @@ a{
     border-radius: 10px;
     position: relative;
     overflow: hidden;
-    /* background-color: rgb(240, 238, 238); */
 }
 
-.container-two-one-two-one-one-one-one{
+.container-two-one-two-one-one-one-one {
     width: 100px;
     height: 100px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: rgb(29, 124, 207); */
 }
 
-.container-two-one-two-one-one-one-two{
+.container-two-one-two-one-one-one-two {
     width: 100px;
     height: 150px;
     border-radius: 10px;
     position: absolute;
-    /* top: 0; */
-    /* background-color: rgb(240, 238, 238); */
 }
 
-.container-two-one-two-one-one-one-three{
+.container-two-one-two-one-one-one-three {
     width: 100px;
     height: 50px;
     border-radius: 10px;
@@ -158,35 +151,35 @@ a{
     bottom: 0;
 }
 
-.btn-card{
+.btn-card {
     width: 50px;
     height: 20px;
     border: 0;
     border-radius: 5px;
-    background-color: rgb(139,255, 255);
+    background-color: rgb(139, 255, 255);
     transition: width .5s;
 }
 
-.btn-card:hover{
+.btn-card:hover {
     width: 70px;
 }
 
-.text-info{
+.text-info {
     font-size: 25px;
     color: rgb(104, 104, 104);
     text-align: center;
 }
 
-.container-two-two{
+.container-two-two {
     width: 20%;
     height: 100%;
 }
 
-.container-two-two-one{
+.container-two-two-one {
     margin-top: 50px;
 }
 
-.container-two-two-one-one{
+.container-two-two-one-one {
     width: 197px;
     height: 37px;
     margin-bottom: 20px;
@@ -197,7 +190,7 @@ a{
     border: 1.5px solid rgb(141, 146, 150);
 }
 
-.container-two-two-one-two{
+.container-two-two-one-two {
     width: 200px;
     height: 30px;
     position: relative;
@@ -205,151 +198,174 @@ a{
     border-radius: 10px;
 }
 
-.space-between{
+.space-between {
     display: flex;
     justify-content: space-between;
 }
 
-.absolute{
+.absolute {
     position: absolute;
     right: 0;
     border: 1.5px solid rgb(141, 146, 150);
 }
 
-.absolute:hover{
-    background-color: rgb(141, 146, 150);  
+.absolute:hover {
+    background-color: rgb(141, 146, 150);
     /* background-color: rgb(149, 149, 149)!important;    */
 }
 
-.red{
+.red {
     border: 1.5px solid rgb(255, 146, 139);
 }
 
-.green{
+.green {
     border: 1.5px solid rgb(155, 255, 139);
 }
 
-.space{
+.space {
     margin-top: 30px;
     margin-bottom: 25px;
 }
 
-.information{
+.information {
     color: rgb(141, 146, 150);
 }
 
-.up{
+.up {
     top: 0;
     animation: up .5s forwards;
 }
 
 @keyframes up {
-    0%{
+    0% {
         top: 100px;
     }
-    100%{
+
+    100% {
         top: 0px;
     }
 }
 
-.down{
+.down {
     top: 100px;
     animation: down .5s forwards;
 }
 
 @keyframes down {
-    0%{
+    0% {
         top: 0;
     }
-    100%{
+
+    100% {
         top: 100px;
     }
 }
 
-.text-temperature{
+.text-temperature {
     font-size: 20px;
     text-align: center;
     color: rgb(104, 104, 104);
 }
 
-@media screen and (max-width: 768px) {
-    .container-lvl {
-        width: 80%;
-        margin: 10px 0;
-        text-align: center;
-        padding: 10px;
+@media screen and (max-width: 1140px) {
+    @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    * {
+        user-select: none;
+        font-family: Kanit;
+        padding: 0;
+        margin: 0;
     }
 
-    .text-lvl {
-        font-size: 30px; /* Kurangi ukuran font untuk responsif */
+    a {
+        text-decoration: none;
     }
 
-    .container-two-one-two-one-one-one {
+    .container-one {
         width: 100%;
-        margin: 10px 0;
+        height: 20vh;
         display: flex;
-        flex-wrap: wrap;
+        align-items: center;
         justify-content: center;
-    }
-
-    .container-two-one-two-one-one-one-one,
-    .container-two-one-two-one-one-one-one-one,
-    .container-two-one-two-one-one-one-two,
-    .container-two-one-two-one-one-one-three {
-        width: 90%;
-        height: auto;
-        margin: 10px 0;
-        text-align: center;
-    }
-
-    .text-watch, .text-info, .text-temperature {
-        font-size: 16px; /* Sesuaikan ukuran font */
     }
 
     .container-watch {
-        width: 90%;
-        margin: 10px 0;
+        all: unset;
+        width: 200px;
+        height: 50px;
+        border-radius: 25px;
+        border: 1.5px solid rgb(141, 146, 150);
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .container-two {
-        flex-direction: column;
-        align-items: center;
+        all: unset;
+        width: 100%;
+    }
+
+    .wrap {
+        width: 100%;
+        display: flex;
         justify-content: center;
-        height: auto;
+        align-items: center;
     }
 
-    .btn {
-        width: 100px;
-        height: 35px;
+    .container-lvl {
+        width: 200px;
+        margin: 10px;
+        text-align: center;
+        border-radius: 15px;
+        border: 1.5px solid rgb(141, 146, 150);
     }
 
-    .btn-card {
-        width: 70px;
-        height: 25px;
+    .text-lvl {
+        font-size: 20px;
+        color: rgb(141, 146, 150);
     }
 
+    .space {
+        margin-top: 10px;
+        margin-bottom: 7.5px;
+    }
+
+    .container-two-one,
+    .container-two-one-two,
+    .container-two-one-two-one {
+        all: unset;
+    }
+
+    .container-two-one,
     .container-two-two {
         width: 100%;
-        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .container-two-two-one {
-        margin-top: 20px;
+    .container-two-one-two-one-one {
+        all: unset;
+        width: 420px;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .container-two-two-one-one, .container-two-two-one-two {
-        width: 90%;
-        height: auto;
-        margin: 10px auto;
+}
+
+@media screen and (max-width: 430px) {
+    .container-two-one-two-one-one {
+        all: unset;
     }
 
-    .absolute {
-        width: 90%;
-        position: static;
-        margin: 10px 0;
+    .container-two-one {
+        display: flex;
+        justify-content: center;
     }
 
-    .information {
-        font-size: 14px;
+    .text-floor {
+        font-size: 40px;
     }
 }
